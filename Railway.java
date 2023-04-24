@@ -1,12 +1,11 @@
 package BufferLoop;
 
-
-
 /*
  * 
  * Data Structure used : LinkedList, Array, Queue, HashSet
  * Concepts used : OOPs, Data Structure
  */
+
 
 import java.util.*;
 
@@ -33,7 +32,6 @@ class passNode{
 	String date;
 	int seatNo;
 }
-
 
 //seat matrix
 class seatMatrix
@@ -127,8 +125,20 @@ class operations1  {
 		    }
 		}
 		getSeat.set.remove(seat1);	// remove the seat number that is already assigned to one of the passengers
-		
 		newNode.seatNo=seat1;
+		
+		System.out.println("\nYour ticket details:");
+        System.out.print("------------------TICKET-----------------------");
+		System.out.print("\nFirst Name: "+newNode.fName);
+		System.out.print("\nLast Name: "+newNode.lName);
+		System.out.print("\nAge: "+newNode.age);
+		System.out.print("\nGender: "+newNode.gender);
+		System.out.print("\nRegNO: "+newNode.Reg_no);	
+
+		System.out.print("\nDate of journey: "+newNode.date);
+		System.out.print("\nClass: "+newNode.train_class);
+		System.out.print("\nSeat Number:"+newNode.seatNo+"\n");
+		
 		if(head==null) 		
 			head=newNode;
 		
@@ -141,7 +151,6 @@ class operations1  {
 			ptr.next=newNode;
 		}
 		return head;
-		
 		
 	}
 
@@ -158,7 +167,6 @@ class operations1  {
 				System.out.print("\nAge: "+ptr.age);
 				System.out.print("\nGender: "+ptr.gender);
 				System.out.print("\nRegNO: "+ptr.Reg_no);	
-		
 				System.out.print("\nDate of journey: "+ptr.date);
 				System.out.print("\nClass: "+ptr.train_class);
 				System.out.print("\nSeat Number:"+ptr.seatNo+"\n");
@@ -261,9 +269,6 @@ class operation2  {
 					obj.book_ticket(REhead,REseat);
 				}
 				T[0].count++;
-				System.out.println("\nYour ticket details:");
-		        System.out.print("------------------TICKET-----------------------");
-		        obj.display_passenger(REhead);
 				break;
 			
 			case 1940:
@@ -274,9 +279,6 @@ class operation2  {
 					obj.book_ticket(SEhead,SEseat);
 				}
 				T[1].count++;
-				System.out.println("\nYour ticket details:");
-		        System.out.print("------------------TICKET-----------------------");
-		        obj.display_passenger(SEhead);
 				break;
 
 			case 7352:
@@ -287,9 +289,6 @@ class operation2  {
 					obj.book_ticket(DEhead,DEseat);
 				}
 				T[2].count++;
-				System.out.println("\nYour ticket details:");
-		        System.out.print("------------------TICKET-----------------------");
-		        obj.display_passenger(DEhead);
 				break;
 
 			case 6233:
@@ -300,9 +299,6 @@ class operation2  {
 					obj.book_ticket(GEhead,GEseat);
 				}
 				T[3].count++;
-				System.out.println("\nYour ticket details:");
-		        System.out.print("------------------TICKET-----------------------");
-		        obj.display_passenger(GEhead);
 				break;
 
 			case 9200:
@@ -313,9 +309,6 @@ class operation2  {
 					obj.book_ticket(HEhead,HEseat);
 				}
 				T[0].count++;
-				System.out.println("\nYour ticket details:");
-		        System.out.print("------------------TICKET-----------------------");
-		        obj.display_passenger(HEhead);
 				break;
 
 			default:

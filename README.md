@@ -1,2 +1,3 @@
 # Railway-Reservation-System
-This project is for buffer 4.0
+
+This is a railway reservation system implemented in java using Data Structures and OOPS.

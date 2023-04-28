@@ -126,7 +126,7 @@ class operations1
 		// validation for the last name to only contain alphabets
 		while (true) 
 		{
-			System.out.print("Enter first name: ");
+			System.out.print("Enter last name: ");
 			newNode.lName = sc.next();
 
 			if (newNode.lName.matches("^[a-zA-Z]*$")) 
@@ -334,50 +334,56 @@ class operations1
 	}	
 
 	// cancel booking of a passenger
-	void cancelBooking(passNode head1)
+	void cancelBooking(passNode head1, seatMatrix q)
 	{
 
-	    // base case : no tickets have been booked
-	    if(head1 == null) 
-	    {
-	        System.out.println("No tickets have been booked.");
-	    }
-	    else  
-	    {
-	        System.out.println("Enter the seat number that you want to cancel : ");
-	        int seatNum = sc.nextInt();
+		// base case : no tickets have been booked
+		if(head1 == null) 
+		{
+			System.out.println("No tickets have been booked.");
+		}
+		else  
+		{
+			System.out.println("Enter the seat number that you want to cancel : ");
+			int seatNum = sc.nextInt();
 
-	        passNode temp = head1, prev = null;
-	        // check if the head node is the one to be deleted
-	        if (temp != null && temp.seatNo == seatNum) 
-	        {
-	            head1 = temp.next;
-	            System.out.println("Booking successfully deleted");
-	            return ;
-	        }
-	        // search for the node to be deleted
-	        while (temp != null && temp.seatNo != seatNum) 
-	        {
-	            prev = temp;
-	            temp = temp.next;
-	        }
-	        // if the node to be deleted is not found
-	        if(temp == null) {
-	            System.out.println("Booking not found with seat number "+seatNum);
-	            return ;
-	        }
-	        // delete the node
-	        prev.next = temp.next;
-	        temp.next = null;
+			passNode temp = head1, prev = null;
+			// check if the head node is the one to be deleted
+			if (temp != null && temp.seatNo == seatNum) 
+			{
+				head1 = temp.next;
+				System.out.println("Booking successfully deleted");
+				return ;
+			}
+			// search for the node to be deleted
+			while (temp != null && temp.seatNo != seatNum) 
+			{
+				prev = temp;
+				temp = temp.next;
+			}
+			// if the node to be deleted is not found
+			if(temp == null) {
+				System.out.println("Booking not found with seat number "+seatNum);
+				return ;
+			}
+			// delete the node
+			prev.next = temp.next;
+			temp.next = null;
 
-	        System.out.println("Booking successfully deleted");
-	    }
+			System.out.println("Booking successfully deleted");
+			waitingToConfirm(seatNum, q);
+		}
 	}
 
 	// assigning the cancelled booking(s) to the waiting passenger(s)
-	void waitingToConfirm(passNode head)
+	void waitingToConfirm(int seatNumber, seatMatrix q)
 	{
-
+		if(!q.waiting.isEmpty())
+		{
+			passNode wait = q.waiting.poll();
+			wait.seatNo = seatNumber;
+			System.out.println("The deleted passenger has been replaced with the first waiting passenger in the list");
+		}
 	}
 }
 
@@ -615,28 +621,23 @@ class operation2
 		switch(trainNo) 
 		{
 		case 4256:
-			obj.cancelBooking(REhead);
-			//obj.waitingToConfirm(REhead);
+			obj.cancelBooking(REhead, REseat);
 			break;
 
 		case 1940:
-			obj.cancelBooking(SEhead);
-			obj.waitingToConfirm(SEhead);
+			obj.cancelBooking(SEhead, SEseat);
 			break;
 
 		case 7352:
-			obj.cancelBooking(DEhead);
-			obj.waitingToConfirm(DEhead);
+			obj.cancelBooking(DEhead, DEseat);
 			break;
 
 		case 6233:
-			obj.cancelBooking(GEhead);
-			obj.waitingToConfirm(GEhead);
+			obj.cancelBooking(GEhead, GEseat);
 			break;
 
 		case 9200:
-			obj.cancelBooking(HEhead);
-			obj.waitingToConfirm(HEhead);
+			obj.cancelBooking(HEhead, HEseat);
 			break;
 
 		default:
@@ -710,3 +711,4 @@ public class Railway
 		while(ch != 0);
 	}
 }
+

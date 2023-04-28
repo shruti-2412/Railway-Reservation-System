@@ -97,115 +97,6 @@ class seatMatrix
 }
 
 
-
-
-
-// class to access the hardcoded values from
-class HardCoded
-{
-
-	// method to pass the hardcoded values from
-	passNode pastPassenger(passNode head, seatMatrix seat2)
-	{
-
-		passNode newNode = head;		// declare new node to traverse the linked list
-
-		// add 1st passenger 
-		newNode.fName = "Hello";
-		newNode.lName = "Hello";
-		newNode.age = 23;
-		newNode.gender = "F";
-		newNode.train_class = "1st AC";
-		newNode.date = "12/12/2023";
-		newNode.seatNo = 11;
-		seat2.set.remove(11);
-
-		for (int i = 0; i < 4; i++) 		
-		{
-			for (int j = 0; j < 5; j++) 		    
-			{
-				if (seat2.seat[i][j] == 11) 
-				{
-					seat2.seat[i][j] = 0;	// update the seat matrix --> replace the booked seats as 0
-					break;		// break from search as the occupied seat is found and updated to 0
-				}
-			}
-		}
-
-		newNode = newNode.next;		// move to the next node of the linked list
-
-		// add 2nd passenger
-		newNode.fName = "Rhea";
-		newNode.lName = "Sharma";
-		newNode.age = 21;
-		newNode.gender = "F";
-		newNode.train_class = "1st AC";
-		newNode.date = "12/12/2023";
-		newNode.seatNo = 12;
-		seat2.set.remove(12);
-
-		for (int i = 0; i < 4; i++) 		
-		{
-			for (int j = 0; j < 5; j++) 		    
-			{
-				if (seat2.seat[i][j] == 12) 
-				{
-					seat2.seat[i][j] = 0;	// update the seat matrix --> replace the booked seats as 0
-					break;		// break from search as the occupied seat is found and updated to 0
-				}
-			}
-		}
-
-		newNode.next = null;		// end of the passenger linked list for now
-		// rest of the passengers will be entered by the user
-
-		// for the very first passenger in the train
-		if(head == null) 	
-		{
-			head = newNode;
-		}
-
-
-		// for the rest of the passengers
-		else  
-		{
-			passNode ptr = head;
-
-			while(ptr.next != null) 
-			{
-				ptr = ptr.next;
-			}
-			ptr.next = newNode;
-		}
-
-		return head;
-	}
-
-
-
-	void displayHardCoded(passNode head)
-	{
-		passNode temp = head;
-
-		while(temp != null)
-		{
-			System.out.print("\nFirst Name: " + temp.fName);
-			System.out.print("\nLast Name: " + temp.lName);
-			System.out.print("\nAge: " + temp.age);
-			System.out.print("\nGender: " + temp.gender);
-			System.out.print("\nRegNO: " + temp.Reg_no);	
-			System.out.print("\nDate of journey: " + temp.date);
-			System.out.print("\nClass: " + temp.train_class);
-			System.out.print("\nSeat Number:" + temp.seatNo+"\n");
-
-			temp = temp.next;		// move to the next passenger node
-		}
-	}
-}
-
-
-
-
 // class to represent the booking and display of the booked tickets
 class operations1  
 {
@@ -217,49 +108,49 @@ class operations1
 		passNode newNode = new passNode();		// initilize a new node storing passenger details
 		newNode.next = null;
 
-
 		// validation for the first name to only contain alphabets
-		while (true) {
+		while (true) 
+		{
 			System.out.print("Enter first name: ");
-			newNode.fName = sc.nextLine();
+			newNode.fName = sc.next();
 
-			if (newNode.fName.matches("^[a-zA-Z]*$")) {
+			if (newNode.fName.matches("^[a-zA-Z]*$")) 
+			{
 				break;
-			} else {
+			} else 
+			{
 				System.out.println("Invalid input. Name should contain only alphabets.");
 			}
 		}
-
-
-
 
 		// validation for the last name to only contain alphabets
-		while (true) {
+		while (true) 
+		{
 			System.out.print("Enter first name: ");
-			newNode.lName = sc.nextLine();
+			newNode.lName = sc.next();
 
-			if (newNode.lName.matches("^[a-zA-Z]*$")) {
+			if (newNode.lName.matches("^[a-zA-Z]*$")) 
+			{
 				break;
-			} else {
+			} else 
+			{
 				System.out.println("Invalid input. Name should contain only alphabets.");
 			}
 		}
-
-
 
 		System.out.print("Age: ");
 		newNode.age = sc.nextInt();
 
 		// validaion to accept gender in a character/letter
-		do {
+		do 
+		{
 			System.out.print("Enter gender (F/M) or (f/m): ");
-			newNode.gender = sc.nextLine().trim().toUpperCase();
+			newNode.gender = sc.next();
 		} while (!(newNode.gender.equals("F") || newNode.gender.equals("M") || newNode.gender.equals("f") || newNode.gender.equals("m")));
 
 
-		newNode.Reg_no = (int)(Math.random()*9999);		// randomly generate a registeration number for the registered passenger
+		newNode.Reg_no = (int)(Math.random()*9999);		// randomly generate a registeration number for the same 
 
-		// choose the train class
 		System.out.println("Select the train class:\n1.Sleeper Class\n2.1st AC\n3.2nd AC\n4.3rd AC");
 		int class_choice = sc.nextInt();
 
@@ -292,7 +183,7 @@ class operations1
 
 		while (!validInputDate) {
 			System.out.print("Enter the date in the format dd/mm/yyyy: ");
-			newNode.date = sc.nextLine();
+			newNode.date = sc.next();
 
 			if (newNode.date.matches("^\\d{2}/\\d{2}/\\d{4}$")) {
 				// Date input is valid
@@ -303,6 +194,7 @@ class operations1
 				System.out.println("Invalid input format. Please enter the date in the format dd/mm/yyyy.");
 			}
 		}
+
 
 		// if there are no seats avaliable
 		if(getSeat.set.isEmpty()) 
@@ -411,19 +303,15 @@ class operations1
 	}
 
 
-
-	HardCoded obj1 = new HardCoded();
 	// display all the confirmed seat passenger
 	void display_passenger(passNode head) 	
-	{	
+	{
 
-		obj1.displayHardCoded(head);
-
+		// base case : no tickets are booked
 		if(head == null) 
 		{
 			System.out.println("No tickets have been booked.");
 		}
-
 
 
 		else  
@@ -444,6 +332,53 @@ class operations1
 			}
 		}
 	}	
+
+	// cancel booking of a passenger
+	void cancelBooking(passNode head1)
+	{
+
+	    // base case : no tickets have been booked
+	    if(head1 == null) 
+	    {
+	        System.out.println("No tickets have been booked.");
+	    }
+	    else  
+	    {
+	        System.out.println("Enter the seat number that you want to cancel : ");
+	        int seatNum = sc.nextInt();
+
+	        passNode temp = head1, prev = null;
+	        // check if the head node is the one to be deleted
+	        if (temp != null && temp.seatNo == seatNum) 
+	        {
+	            head1 = temp.next;
+	            System.out.println("Booking successfully deleted");
+	            return ;
+	        }
+	        // search for the node to be deleted
+	        while (temp != null && temp.seatNo != seatNum) 
+	        {
+	            prev = temp;
+	            temp = temp.next;
+	        }
+	        // if the node to be deleted is not found
+	        if(temp == null) {
+	            System.out.println("Booking not found with seat number "+seatNum);
+	            return ;
+	        }
+	        // delete the node
+	        prev.next = temp.next;
+	        temp.next = null;
+
+	        System.out.println("Booking successfully deleted");
+	    }
+	}
+
+	// assigning the cancelled booking(s) to the waiting passenger(s)
+	void waitingToConfirm(passNode head)
+	{
+
+	}
 }
 
 
@@ -455,6 +390,7 @@ class operation2
 
 	Train1 T[] = new Train1[5];		// array object of the class train to store the details of the 5 trains 
 
+	operations1 obj = new operations1();		// create an onject of the class operations1 to use the functions belonging to the class operations1 in class operations2
 
 	// initilizing the nodes for each train
 	passNode REhead = null;
@@ -534,13 +470,9 @@ class operation2
 		}	
 	}
 
-	operations1 obj = new operations1();		// create an onject of the class operations1 to use the functions belonging to the class operations1 in class operations2
-	HardCoded obj1 = new HardCoded();
-
 
 	void BookTicket() 	
 	{
-
 		// keep asking the user to enter the train number till it is valid 
 		boolean isValid = false;
 		System.out.println("Enter the train number: ");
@@ -557,11 +489,8 @@ class operation2
 		} while (!isValid);
 
 
-		// the number of passenger for a particular train
 		System.out.println("Enter the no of the passengers travelling:");
 		int passengerNo = sc.nextInt();
-
-		SEhead = obj1.pastPassenger(SEhead, SEseat);		// for the hardcoded values
 
 		for(int i = 0; i < passengerNo; i++) 
 		{
@@ -569,11 +498,7 @@ class operation2
 
 			switch(trainNo) 
 			{
-
-
 			case 4256 :
-
-
 				if(T[0].count == 0)  
 				{
 					REhead = obj.book_ticket(REhead, REseat);
@@ -586,11 +511,7 @@ class operation2
 				T[0].count++;
 				break;
 
-
 			case 1940 :
-
-				SEhead = obj1.pastPassenger(SEhead, SEseat);		// for the hardcoded values
-
 				if(T[1].count == 0) 
 				{
 					SEhead = obj.book_ticket(SEhead,SEseat);
@@ -603,11 +524,7 @@ class operation2
 				T[1].count++;
 				break;
 
-
 			case 7352 :
-
-				DEhead = obj1.pastPassenger(DEhead, DEseat);		// for the hardcoded values
-
 				if(T[2].count == 0) 
 				{
 					DEhead = obj.book_ticket(DEhead,DEseat);
@@ -620,11 +537,7 @@ class operation2
 				T[2].count++;
 				break;
 
-
 			case 6233 :
-
-				GEhead = obj1.pastPassenger(GEhead, GEseat);		// for the hardcoded values
-
 				if(T[3].count == 0) 
 				{
 					GEhead = obj.book_ticket(GEhead,GEseat);
@@ -637,11 +550,7 @@ class operation2
 				T[3].count++;
 				break;
 
-
 			case 9200 :
-
-				HEhead = obj1.pastPassenger(HEhead, HEseat);		// for the hardcoded values
-
 				if(T[4].count == 0) 
 				{
 					HEhead = obj.book_ticket(HEhead,HEseat);
@@ -654,15 +563,14 @@ class operation2
 				T[4].count++;
 				break;
 
-
 			default:
-				System.out.println("This is the wrong train number");
+				System.out.println("Wrong train number");
 				break;
 			}
 		}
 	}
 
-
+	// display the confirmed passenger details by mapping them to their approriate trains
 	void DisplayPassenger() 	
 	{
 		System.out.println("Enter the Train no to get passenger list : ");
@@ -671,28 +579,64 @@ class operation2
 		switch(trainNo) 
 		{
 		case 4256:
-			obj1.displayHardCoded(REhead);
 			obj.display_passenger(REhead);
 			break;
 
 		case 1940:
-			obj1.displayHardCoded(SEhead);
 			obj.display_passenger(SEhead);
 			break;
 
 		case 7352:
-			obj1.displayHardCoded(DEhead);
 			obj.display_passenger(DEhead);
 			break;
 
 		case 6233:
-			obj1.displayHardCoded(GEhead);
 			obj.display_passenger(GEhead);
 			break;
 
 		case 9200:
-			obj1.displayHardCoded(HEhead);
 			obj.display_passenger(HEhead);
+			break;
+
+		default:
+			System.out.println("Wrong train number");
+			break;
+		}
+	}
+
+
+	// identify which train does the deletion needs to be done from
+	void cancelPassenger()
+	{
+
+		System.out.println("Enter the Train no from which you want to delete your bookings : ");
+		int trainNo = sc.nextInt();
+
+		switch(trainNo) 
+		{
+		case 4256:
+			obj.cancelBooking(REhead);
+			//obj.waitingToConfirm(REhead);
+			break;
+
+		case 1940:
+			obj.cancelBooking(SEhead);
+			obj.waitingToConfirm(SEhead);
+			break;
+
+		case 7352:
+			obj.cancelBooking(DEhead);
+			obj.waitingToConfirm(DEhead);
+			break;
+
+		case 6233:
+			obj.cancelBooking(GEhead);
+			obj.waitingToConfirm(GEhead);
+			break;
+
+		case 9200:
+			obj.cancelBooking(HEhead);
+			obj.waitingToConfirm(HEhead);
 			break;
 
 		default:
@@ -717,10 +661,13 @@ public class Railway
 
 		obj2.create();		// create objects of the trains 
 
+
+		System.out.println();
+
 		do 
 		{
-			System.out.println("\n------------------Select from the options below-----------------------");
-			System.out.println("\n0. Exit the application \n1. Book ticket \n2. Display passenger \n3. Display the seat matrix \n4. Delete booking");
+			System.out.println("\n------------------Select From The Options Below-----------------------");
+			System.out.println("\n0. Exit \n1. Book A Ticket \n2. Display Passenger Details \n3. Delete Booking");
 			System.out.println();
 
 			System.out.println("Enter your choice : ");
@@ -741,15 +688,24 @@ public class Railway
 				obj2.DisplayTrain();
 				obj2.DisplayPassenger();
 				break;
+
 			case 3:
+				obj2.DisplayTrain();
+				obj2.cancelPassenger();
 				break;
 
 			default:
 				System.out.println("Invalid choice!");
 				break;
-			}	
+			}
+
 			System.out.println("\nEnter 1 to continue, 0 to terminate : ");
 			ch = sc.nextInt();
+
+			if(ch == 0)
+			{
+				System.out.println("~Thank you for visiting!!");		// bye message
+			}
 		}
 		while(ch != 0);
 	}

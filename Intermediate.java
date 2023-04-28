@@ -18,7 +18,6 @@ package BufferLoop;
 
 
 
-
 import java.util.*;
 
 
@@ -60,11 +59,14 @@ class seatMatrix
 	int[][] seat = new int[4][5];		// 2-D array storing the structure of the seating arrangement
 
 	HashSet<Integer> set = new HashSet<>();		// set represents the available seats (i.e. seats that are not already booked)
+	HashMap<String, Integer> map = new HashMap<>();		// to store the indexes of the seats
 
 	Queue<passNode> waiting = new LinkedList<>();		// queue represents the waiting queue
 
 	seatMatrix()		// constructor to initilize 
 	{
+
+		// the matrix will display the seat number where seat is avaliable and 0 where the seat is booked
 		int k = 11;
 		for(int i = 0; i < 4 ; i++)		
 		{
@@ -75,9 +77,23 @@ class seatMatrix
 			}
 		}
 
+		// hashset represents the seats that are avaliable(not booked yet)
 		for(int i = 11; i < 31; i++)		
 		{
 			set.add(i);		// all seats are available at the beginning 
+		}
+
+
+		// hashmap stores the index-value pair of the seat matrix 
+		// this will be required in mapping 
+		for(int i = 0; i < 4; i++)
+		{
+			for(int j = 0; j < 5; j++)
+			{
+				String index = i + "," + j;
+				int value = seat[i][j];
+				map.put(index, value);
+			}
 		}
 	}
 
@@ -333,6 +349,7 @@ class operations1
 		}
 	}	
 
+
 	// cancel booking of a passenger
 	void cancelBooking(passNode head1, seatMatrix q)
 	{
@@ -378,7 +395,38 @@ class operations1
 	// assigning the cancelled booking(s) to the waiting passenger(s)
 	void waitingToConfirm(int seatNumber, seatMatrix q)
 	{
-		if(!q.waiting.isEmpty())
+		// if the waiting queue is empty
+		if(q.waiting.isEmpty())
+		{
+			// the seat number that is cancelled is changed from 0 to the seat number 
+			// to indicate that it is now avaliable for booking 
+			for (Map.Entry<String, Integer> entry : q.map.entrySet()) 
+			{
+				if (entry.getValue() == seatNumber) 
+				{
+					
+					// get the row and column number of the value using the key (index)
+					String index = entry.getKey();
+					int delimiterIndex = index.indexOf(",");
+					int row = Integer.parseInt(index.substring(0, delimiterIndex));
+					int col = Integer.parseInt(index.substring(delimiterIndex+1));
+
+					// update the value in the matrix
+					q.seat[row][col] = seatNumber;
+
+					// update the value in the hashmap
+					q.map.put(index, seatNumber);
+				}
+			}
+			
+			
+			// adding the cancelled registration seat number back into the hash set, hashset represents the avaliable seats 
+			q.set.add(seatNumber);
+		}
+		
+		
+		// if the waiting queue is not empty, assign the deleted seat number to the first passenger in the waiting queue
+		else if(!q.waiting.isEmpty())
 		{
 			passNode wait = q.waiting.poll();
 			wait.seatNo = seatNumber;
@@ -711,4 +759,6 @@ public class Railway
 		while(ch != 0);
 	}
 }
+
+
 

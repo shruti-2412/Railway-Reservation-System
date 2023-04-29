@@ -16,6 +16,8 @@ Java Programming Language
 #### Data Structures used: 
 LinkedList, Array, Queue, Hashmap, HashSet
 
+#### Project Explanation video:
+
 #### Project Intro: 
 The project aims to ease the railway reservation process for passengers by making it a simple and user-friendly process. The passenger can book the ticket for the respective train based on his/her requirements and can easily delete the booked seat. The project is to simplify the reservation process.
 

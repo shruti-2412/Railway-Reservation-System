@@ -36,3 +36,8 @@ If the passenger wants to delete the reservation he will have to enter the train
 #### Scope or future development:
 The future scope of this project includes a UI for the same and various other functionalities like RAC tickets and seat preference based on upper, lower and middle birth. Also, a ladies quota can be included with only female passengers. 
 
+#### Sample output images:  
+<img width="960" alt="1" src="https://user-images.githubusercontent.com/99483160/235297949-bb7addff-6d0c-4935-b136-1b256bf71603.png">
+<img width="946" alt="2" src="https://user-images.githubusercontent.com/99483160/235297987-e540aa41-cc82-402e-a719-df826f171d38.png">
+<img width="960" alt="3" src="https://user-images.githubusercontent.com/99483160/235297993-b698b40c-b932-41a5-9256-ae3cf8f5eac6.png">
+<img width="960" alt="4" src="https://user-images.githubusercontent.com/99483160/235297995-bc45553a-b485-4454-9b48-1e993f2f77f7.png">

@@ -1,4 +1,7 @@
+// This is the sample output for the given code 
+
 /*
+
  *****RAILWAY REGISTRATION SYSTEM*****
 ------------------Select From The Options Below-----------------------
 0. Exit 

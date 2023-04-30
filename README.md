@@ -1,12 +1,5 @@
 ## Railway Reservation System
 
-#### Team name: Codebytes_SY_62
-
-#### Team Members:
-UCE2021612_Shruti Chandak  
-UCE2021616_Simran Desai  
-UCE2021623_Anushka Gaikwad  
-
 #### Project name: 
 Railway Reservation System under Digital Society
 
@@ -17,8 +10,6 @@ Java Programming Language
 LinkedList, Array, Queue, Hashmap, HashSet
 
 #### Project Explanation video: https://drive.google.com/drive/folders/11LL-QgIT7bkmmkdmFKAFBYLfpuqHV-As?usp=sharing
-
-#### Feedback Form Report: https://drive.google.com/drive/folders/1J1_3OmHGmamJty7XIPUKHuejwSrH5ZTE?usp=sharing
 
 #### Project Intro: 
 The project aims to ease the railway reservation process for passengers by making it a simple and user-friendly process. The passenger can book the ticket for the respective train based on his/her requirements and can easily delete the booked seat. The project is to simplify the reservation process.

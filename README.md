@@ -1,7 +1,7 @@
 ## Railway Reservation System
 
 #### Project name: 
-Railway Reservation System under Digital Society
+Railway Reservation System
 
 #### Tech Stack: 
 Java Programming Language
